@@ -11,7 +11,8 @@ Actual Response: {actual_response}
 
 def test_monopoly_rules():
     assert query_and_validate(
-        question="How much total money does a player start with in Monopoly? (Answer with the number only)",
+       #question="How much total money does a player start with in Monopoly? (Answer with the number only)",
+        question="How much total money does a player start with in Monopoly?",
         expected_response="$1500",
     )
 
@@ -29,7 +30,7 @@ def query_and_validate(question: str, expected_response: str):
         expected_response=expected_response, actual_response=response_text
     )
 
-    model = Ollama(model="mistral")
+    model = Ollama(model="llama3.2")
     evaluation_results_str = model.invoke(prompt)
     evaluation_results_str_cleaned = evaluation_results_str.strip().lower()
 
